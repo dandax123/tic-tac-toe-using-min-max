@@ -9,7 +9,9 @@ To Play:
 1. Run the python script on a python compiler
 2. You can choose each position by using the Row-Col Notation e.g 
 A B C
+
 D E F
+
 G H I
 to play at postion A, it will be [1 1]
 to play at position I, it will be [3,3]
