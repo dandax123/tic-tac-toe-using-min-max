@@ -8,14 +8,18 @@ If a player get 3 in a row,column, or diagonally, the Player wins
 To Play:
 1. Run the python script on a python compiler
 2. You can choose each position by using the Row-Col Notation e.g 
+
 A B C
 
 D E F
 
 G H I
-to play at postion A, it will be [1 1]
-to play at position I, it will be [3,3]
+
+to play at postion A, you  will enter 1 ,1
+to play at position I, you will enter 3,3
+to play at postion C, you will enter 1,3
 3. You keep playing till you get a winner
+4. Watch out, my program is good,lol
 
 Enjoy.
 Thanks,
