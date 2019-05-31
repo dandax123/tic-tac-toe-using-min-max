@@ -1,6 +1,8 @@
 # Tic-Tac-Toe-Against-computer
-This repository contains the code, that implements a tic-tac-toe match for a user against a computer
-The object of Tic Tac Toe is to get three in a row. You play on a three by three game board. 
+This repository contains the code, that implements a tic-tac-toe match for a user against a computer.
+
+The object of Tic Tac Toe is to get three in a row.
+You play on a three by three game board. 
 The first player is known as X and the second is O. 
 Players alternate placing Xs and Os on the game board until either oppent has three in a row or all nine squares are filled. 
 If a player get 3 in a row,column, or diagonally, the Player wins
@@ -22,5 +24,7 @@ to play at postion C, you will enter 1,3
 4. Watch out, my program is good,lol
 
 Enjoy.
+
 Thanks,
+
 Dandax123
