@@ -392,15 +392,17 @@ def chooser(Board):
         #("random",rowchoice,colchoice)
         return rowchoice,colchoice
 
-
+print("Original Board Configuration")
 printBoard(Board)
 while (not WIN) and Num_Moves <= 8:
     if TURN==0:
-        print("This is PLAYER X'S Turn:")
+        print("This is Your Turn:")
         Check_Move=False
         while not Check_Move:
             Row,Col=[int(x) for x in input("Enter the row and column of your tile (SPACE SEPARATED): ").split(" ")]
-            if Board[Row-1][Col-1]!='-':
+            if(Row>3 or Col>3):
+                print("Wrong choice, the position is out of index")
+            elif Board[Row-1][Col-1]!='-':
                 print("That position if already played. Enter the new tile position")
             else:
                 Check_Move=True
@@ -415,11 +417,11 @@ while (not WIN) and Num_Moves <= 8:
             print("CONGRATULATIONS PLAYER X:")
             print("YOU ARE THE WINNER")
     else:
-        print("This is PLAYER O'S Turn:")
+        print("This is the Computer's Turn:")
         Check_Move=False
         while not Check_Move:
             Row,Col=chooser(Board)
-            print("chooser value",Row, Col)
+            #print("chooser value",Row, Col)
             if Board[Row][Col]!='-':
                 print("That position if already played. Generating another position")
             else:
