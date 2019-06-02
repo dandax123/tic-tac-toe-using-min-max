@@ -52,111 +52,137 @@ Board=[["-","-","-"],["-","-","-"],["-","-","-"]]
 def choosepossiblewin(Board):
     rowin=0
     cowin=0
+    Danda=False
+    #check left diagonals
     if(Board[0][0]==Board[1][1] and TURN!=0 and Board[1][1]=="O"):
-        if(Board[2][2]=="-"):
+        if(Board[2][2]=="-" and Board[2][2]!="X"):
             rowin=2
             cowin=2
+            Danda=True
     elif(Board[0][0]==Board[2][2] and TURN!=0 and Board[0][0]=="O"):
-       if(Board[1][1]=="-"):
+       if(Board[1][1]=="-" and Board[1][1]!="X"):
             rowin=1
             cowin=1
+            Danda=True
     elif(Board[2][2]==Board[1][1] and TURN!=0 and Board[1][1]=="O"):
-        if(Board[0][0]=="-"):
+        if(Board[0][0]=="-" and Board[0][0]!="X"):
             rowin=0
             cowin=0
+            Danda=True
+    #check  row 0 
     elif(Board[0][0]==Board[0][1] and TURN!=0 and Board[0][1]=="O"):
-       if(Board[0][2]=="-"):
+       if(Board[0][2]=="-" and Board[0][2]!="X"):
             rowin=0
             cowin=2
+            Danda=True
     elif(Board[0][2]==Board[0][1] and TURN!=0 and Board[0][1]=="O"):
-        if(Board[0][0]=="-"):
+        if(Board[0][0]=="-" and Board[0][0]!="X"):
             rowin=0
             cowin=0
+            Danda=True
     elif(Board[0][0]==Board[0][2] and TURN!=0 and Board[0][2]=="0"):
-        if(Board[0][2]=="-"):
+        if(Board[0][1]=="-" and Board[0][1]!="X"):
             rowin=0
             cowin=1
-    
+            Danda=True
+    #check row 1
     elif(Board[1][0]==Board[1][1] and TURN!=0 and Board[1][1]=="O"):
-       if(Board[1][2]=="-"):
+       if(Board[1][2]=="-" and Board[1][2]!="X"):
             rowin=1
             cowin=2
+            Danda=True
     elif(Board[1][2]==Board[1][1] and TURN!=0 and Board[1][1]=="O"):
-        if(Board[1][0]=="-"):
+        if(Board[1][0]=="-" and Board[1][0]!="X"):
             rowin=1
             cowin=0
+            Danda=True
     elif(Board[1][0]==Board[1][2] and TURN!=0 and Board[1][2]=="O"):
-        if(Board[1][2]=="-"):
+        if(Board[1][1]=="-" and Board[1][1]!="X"):
             rowin=1
             cowin=1
+            Danda=True
     
-
+    #chech  row 2
     elif(Board[2][0]==Board[2][1] and TURN!=0 and Board[2][1]=="O"):
-       if(Board[2][2]=="-"):
+       if(Board[2][2]=="-" and Board[2][2]!="X"):
             rowin=2
             cowin=2
+            Danda=True
     elif(Board[2][2]==Board[2][1] and TURN!=0 and Board[2][1]=="O"):
-        if(Board[2][0]=="-"):
+        if(Board[2][0]=="-" and Board[2][0]!="X"):
             rowin=2
             cowin=0
+            Danda=True
     elif(Board[2][0]==Board[2][2] and TURN!=0 and Board[2][2]=="O"):
-        if(Board[2][2]=="-"):
+        if(Board[2][1]=="-" and Board[2][1]!="X"):
             rowin=2
             cowin=1
-    
-    
+            Danda=True
+    #check column 0
     elif(Board[0][0]==Board[1][0] and TURN!=0 and Board[1][0]=="O"):
-       if(Board[2][0]=="-"):
+       if(Board[2][0]=="-" and Board[2][0]!="X"):
             rowin=2
             cowin=0
+            Danda=True
     elif(Board[2][0]==Board[1][0] and TURN!=0 and Board[1][0]=="O"):
-        if(Board[0][0]=="-"):
+        if(Board[0][0]=="-" and Board[0][0]!="X"):
             rowin=0
             cowin=0
+            Danda=True
     elif(Board[0][0]==Board[2][0] and TURN!=0 and Board[2][0]=="O"):
-        if(Board[1][0]=="-"):
+        if(Board[1][0]=="-" and Board[1][0]!="X"):
             rowin=1
             cowin=0
-    
+            Danda=True
+    #check column 1
     elif(Board[0][1]==Board[1][1] and TURN!=0 and Board[1][1]=="O"):
-       if(Board[2][1]=="-"):
+       if(Board[2][1]=="-" and Board[2][1]!="X"):
             rowin=2
             cowin=1
+            Danda=True
     elif(Board[2][1]==Board[1][1] and TURN!=0 and Board[1][1]=="O"):
-        if(Board[0][1]=="-"):
+        if(Board[0][1]=="-" and Board[0][1]!="X"):
             rowin=0
             cowin=1
+            Danda=True
     elif(Board[0][1]==Board[2][1] and TURN!=0 and Board[2][1]=="O"):
-        if(Board[1][1]=="-"):
+        if(Board[1][1]=="-" and Board[1][1]!="X"):
             rowin=1
             cowin=1
-    
+            Danda=True
+    #check column 2
     elif(Board[0][2]==Board[1][2] and TURN!=0 and Board[1][2]=="O"):
-       if(Board[2][2]=="-"):
+       if(Board[2][2]=="-" and Board[2][2]!="X"):
             rowin=2
             cowin=2
+            Danda=True
     elif(Board[2][2]==Board[1][2] and TURN!=0 and Board[1][2]=="O"):
-        if(Board[0][2]=="-"):
+        if(Board[0][2]=="-" and Board[0][2]!="X"):
             rowin=0
             cowin=2
+            Danda=True
     elif(Board[0][2]==Board[2][2] and TURN!=0 and Board[2][2]=="O"):
-        if(Board[1][2]=="-"):
+        if(Board[1][2]=="-" and Board[1][2]!="X"):
             rowin=1
             cowin=2
+            Danda=True
+    #check right diagonal        
     elif(Board[0][2]==Board[1][1] and TURN!=0 and Board[1][1]=="O"):
-        if(Board[2][0]=="-"):
+        if(Board[2][0]=="-" and Board[2][0]!="X"):
             rowin=2
             cowin=0
+            Danda=True
     elif(Board[2][0]==Board[1][1] and TURN!=0 and Board[1][1]=="O"):
-        if(Board[0][2]=="-"):
+        if(Board[0][2]=="-" and Board[0][2]!="X"):
             rowin=0
             cowin=2
+            Danda=True
     elif(Board[0][2]==Board[2][0] and TURN!=0 and Board[2][0]=="O"):
-        if(Board[1][1]=="-"):
+        if(Board[1][1]=="-" and Board[1][1]!="X"):
             rowin=1
             cowin=1
-    
-    return rowin,cowin
+            Danda=True
+    return rowin,cowin,Danda
     
     
 def rowcheck(Board):
@@ -316,6 +342,21 @@ def leftdiagonalcheck(Board):
         randrowe=-1
         randcole=-1
     return randrowe,randcole
+def randgenerator(Board):
+    rand1=0
+    rand2=0
+    for i in range(0,3):
+        for j in range(0,3):
+            if(Board[i][j]=="-" and Board!="X" and Board!="O"):
+                rand1=random.randint(0,i);
+                rand2=random.randint(0,j);
+    return rand1,rand2
+def checkers(Board):
+    getrow=0
+    getcol=0
+    checkers=False
+    getrow,getcol,checkers=choosepossiblewin(Board)
+    return getrow,getcol,checkers
 def rightdiagonalcheck(Board):
     randrow=-1
     randcol=-1
@@ -349,14 +390,18 @@ def chooser(Board):
     cha,b=Columncheck(Board)
     ldc,c=leftdiagonalcheck(Board)
     rdc,d=rightdiagonalcheck(Board)
-    rowchoice=random.randint(0,2)
-    colchoice=random.randint(0,2)
+    rowchoice,colchoice=randgenerator(Board)
+    grow,gcol,gcheck=checkers(Board)
     #print("rha",rha,a)
     #print("cha",cha,b)
     #print("ldc",ldc,c)
     #print("rdc",rdc,d)
-    if(Num_Moves>=2):
+    if(gcheck==True and Num_Moves>4):
+        #print("win situation",grow,gcol)
+        return grow,gcol
+    elif(Num_Moves>=3):
         if(rha>=0 and (cha<0) and (ldc<0) and (rdc<0)):
+            #print("rha",rha,a)
             rha,a=rowcheck(Board)
             return rha,a
         elif(cha>=0 and (rha<0) and (ldc<0) and (rdc<0)):
@@ -372,26 +417,30 @@ def chooser(Board):
             #print("rdc",rdc,d)
             return rdc,d
         elif(rha>=0 and cha>=0 and(ldc<0) and (rdc<0)):
+            #print("choosing when rha and cha has", rha,a)
             return rha,a
         elif(cha>=0 and rdc>=0 and(rha<0) and (ldc<0)):
+            #print("choosing when cha and rdc has", cha,b)
             return cha,b
         elif(cha>=0 and ldc>=0 and(rha<0) and (rdc<0)):
+            #print("choosing when ldc and cha has", ldc,c)
             return ldc,c
         elif(rha>=0 and rdc>=0 and(cha<0) and (ldc<0)):
+            #print("choosing when rha and rdc has", rdc,d)
             return rdc,d
         elif(rha>=0 and ldc>=0 and(cha<0) and (rdc<0)):
+            #print("choosing when rha and ldc has", ldc,c)
             return ldc,c
-        else:
-            specialrow,specialcol=choosepossiblewin(Board)
-            return specialrow, specialcol
+        #else:
+            #specialrow,specialcol=choosepossiblewin(Board)
+            #return specialrow, specialcol
     elif( not WIN and Num_Moves==8):
         x,y=freespot(Board)
+        #print("choosing free spot",x,y)
         return x,y
     elif(Num_Moves<3):
-        #return rowchoice,colchoice
-        #("random",rowchoice,colchoice)
+        #print("random chosen",rowchoice,colchoice)
         return rowchoice,colchoice
-
 print("Original Board Configuration")
 printBoard(Board)
 while (not WIN) and Num_Moves <= 8:
@@ -419,13 +468,15 @@ while (not WIN) and Num_Moves <= 8:
     else:
         print("This is the Computer's Turn:")
         Check_Move=False
-        while not Check_Move:
-            Row,Col=chooser(Board)
-            #print("chooser value",Row, Col)
-            if Board[Row][Col]!='-':
-                print("That position if already played. Generating another position")
-            else:
-                Check_Move=True
+        #while not Check_Move:
+        
+        
+        Row,Col=chooser(Board)
+        #print("chooser value",Row, Col)
+        #if Board[Row][Col]!='-':
+         #       print("That position is already played. Generating another position")
+          #  else:
+           #     Check_Move=True
                 
         Board[Row][Col]='O'
         printBoard(Board)
@@ -434,7 +485,6 @@ while (not WIN) and Num_Moves <= 8:
         if Num_Moves > 4:
             WIN=Check_WINNER(Board)
         if WIN:
-            print("CONGRATULATIONS PLAYER O:")
-            print("YOU ARE THE WINNER")
+            print("THE COMPUTER WINS!!!:")
 if not WIN:
     print("The Game ended as a tie")
