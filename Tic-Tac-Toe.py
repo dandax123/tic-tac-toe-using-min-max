@@ -21,9 +21,9 @@ def freespot(Board):
     if(Num_Moves==8):
         for i in range(0,3):
             for j in range(0,3):
-                if(Board[i][j]=="-"):
-                    freerow=i
-                    freecol=j
+                if(Board[i][j]=="-" and Board[i][j]!="X" and Board[i][j]!="O"):
+                    freerow=random.randint(0,i)
+                    freecol=random.randint(0,j)
     return freerow, freecol
 def Check_WINNER(Board):
     # Check Rows
@@ -386,6 +386,7 @@ def rightdiagonalcheck(Board):
         
     return randrow,randcol  
 def chooser(Board):
+    x,y=freespot(Board)
     rha,a=rowcheck(Board)
     cha,b=Columncheck(Board)
     ldc,c=leftdiagonalcheck(Board)
@@ -431,11 +432,16 @@ def chooser(Board):
         elif(rha>=0 and ldc>=0 and(cha<0) and (rdc<0)):
             #print("choosing when rha and ldc has", ldc,c)
             return ldc,c
-        #else:
+        elif(rha<0 and ldc<0 and cha<0 and rdc<0 and gcheck==False and Num_Moves>=3):
+            for i in range(0,3):
+                for j in range(0,3):
+                    if(Board[i][j]=="-" and Board[i][j]!="X" and Board[i][j]!="O"):
+                        #print("choosing free spot")
+                        return i,j
             #specialrow,specialcol=choosepossiblewin(Board)
             #return specialrow, specialcol
-    elif( not WIN and Num_Moves==8):
-        x,y=freespot(Board)
+    #elif( not WIN and Num_Moves==8):
+        #x,y=freespot(Board)
         #print("choosing free spot",x,y)
         return x,y
     elif(Num_Moves<3):
@@ -481,7 +487,7 @@ while (not WIN) and Num_Moves <= 8:
         Board[Row][Col]='O'
         printBoard(Board)
         TURN=0
-        Num_Moves += 1
+        Num_Moves += 1  
         if Num_Moves > 4:
             WIN=Check_WINNER(Board)
         if WIN:
