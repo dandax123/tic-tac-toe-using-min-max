@@ -20,6 +20,7 @@ G H I
 to play at postion A, you  will enter 1 ,1
 to play at position I, you will enter 3,3
 to play at postion C, you will enter 1,3
+
 3. You keep playing till you get a winner
 4. Watch out, my program is good,lol
 
