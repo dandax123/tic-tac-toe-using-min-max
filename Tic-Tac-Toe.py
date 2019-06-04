@@ -455,7 +455,7 @@ while (not WIN) and Num_Moves <= 8:
         Check_Move=False
         while not Check_Move:
             Row=int(input("Enter the Row:"))
-            Col=int(input("Enter the Column"))
+            Col=int(input("Enter the Column: "))
             if(Row>3 or Col>3):
                 print("Wrong choice, the position is out of index")
             elif Board[Row-1][Col-1]!='-':
