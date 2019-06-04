@@ -454,7 +454,8 @@ while (not WIN) and Num_Moves <= 8:
         print("This is Your Turn:")
         Check_Move=False
         while not Check_Move:
-            Row,Col=[int(x) for x in input("Enter the row and column of your tile (SPACE SEPARATED): ").split(" ")]
+            Row=int(input("Enter the Row:"))
+            Col=int(input("Enter the Column"))
             if(Row>3 or Col>3):
                 print("Wrong choice, the position is out of index")
             elif Board[Row-1][Col-1]!='-':
