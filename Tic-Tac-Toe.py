@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri May 31 12:06:22 2019
-
-@author: OLUKARE DANIEL
-"""
-
 from random import randrange, randint
 TURN=0
 WIN=False
@@ -149,13 +142,13 @@ def rowcheck(Board):
     rowx =-1
     colx = -1
     for i in range(0, 3):
-        if Board[i][0] == Board[i][1] and Board[i][1]!='O' and Board[i][2] == '-' :
+        if Board[i][0] == Board[i][1] and Board[i][1]=='X' and Board[i][2] == '-' :
             rowx = i
             colx = 2
-        elif Board[i][1] == Board[i][2] and Board[i][1]!='O' and Board[i][0] == '-' :
+        elif Board[i][1] == Board[i][2] and Board[i][1]=='X' and Board[i][0] == '-' :
             rowx = i
             colx = 0
-        elif Board[i][0] == Board[i][2] and Board[i][2]!='O' and Board[i][1] == '-' :
+        elif Board[i][0] == Board[i][2] and Board[i][2]=='X' and Board[i][1] == '-' :
             rowx = i
             colx = 1
     return rowx, colx
@@ -164,47 +157,35 @@ def Columncheck(Board):
     rowx = -1
     colx = -1
     for j in range(0, 3):        
-        if Board[0][j] == Board[1][j] and Board[2][j]=='-' and   Board[1][j]!='O':         
+        if Board[0][j] == Board[1][j] and Board[2][j]=='-' and   Board[1][j]=='X':         
             rowx = 2
             colx = j
 
-        if Board[1][j] == Board[2][j] and Board[0][j]=='-' and Board[1][j]!='O':         
+        elif Board[1][j] == Board[2][j] and Board[0][j]=='-' and Board[1][j]=='X':         
             rowx = 0
             colx = j
 
-        if Board[0][j] == Board[2][j] and Board[1][j]=='-'  and Board[2][j]!='O':         
+        elif Board[0][j] == Board[2][j] and Board[1][j]=='-'  and Board[2][j]=='X':         
             rowx = 1
             colx = j
-
+            
     return rowx, colx
+    
     
 def leftdiagonalcheck(Board):
     randrowe=-1
     randcole=-1
-    if Board[0][0]!='-' and Board[0][0]==Board[1][1] and Board[1][1]!='O':
+    if Board[0][0]!='-' and Board[0][0]==Board[1][1] and Board[1][1]=='X' and Board[2][2]=='-':
         randrowe=2
         randcole=2
-        if(Board[2][2]=="O"):
-            randrowe=-1
-            randcole=-1
 
-    elif Board[1][1]==Board[2][2] and Board[1][1]!="-" and Board[1][1]!='O':
+    elif Board[1][1]==Board[2][2] and Board[1][1]!="-" and Board[1][1]=='X' and Board[0][0]=='-':
         randrowe=0
         randcole=0
-        if(Board[0][0]=="O"):
-            randrowe=-1
-            randcole=-1
 
-    elif Board[2][2]==Board[0][0] and Board[2][2]!="-" and Board[2][2]!='O':
+    elif Board[2][2]==Board[0][0] and Board[2][2]!="-" and Board[2][2]=='X' and Board[1][1]=='-':
         randrowe=1
         randcole=1
-        if(Board[1][1]=="O"):
-            randrowe=-1
-            randcole=-1
-
-    else:
-        randrowe=-1
-        randcole=-1
     return randrowe,randcole
 def randgenerator(Board):
     rand1=0
@@ -224,14 +205,14 @@ def checkers(Board):
 def rightdiagonalcheck(Board):
     randrow=-1
     randcol=-1    
-    if Board[0][2]!='-' and Board[0][2]==Board[1][1] and Board[1][1]!='O':
+    if Board[0][2]!='-' and Board[0][2]==Board[1][1] and Board[1][1]=='X':
         randrow=2
         randcol=0
         if(Board[2][0]=="O"):
             randrow=-1
             randcol=-1
             
-    elif Board[1][1]==Board[2][0] and Board[2][0]!="-" and Board[2][0]!='O':
+    elif Board[1][1]==Board[2][0] and Board[2][0]!="-" and Board[2][0]=='X':
         randrow=0
         randcol=2
         
@@ -239,7 +220,7 @@ def rightdiagonalcheck(Board):
             randrow=-1
             randcol=-1
 
-    elif Board[0][2]==Board[2][0] and Board[0][2]!="-" and Board[0][2]!='O':
+    elif Board[0][2]==Board[2][0] and Board[0][2]!="-" and Board[0][2]=='X':
         randrow=1
         randcol=1
         
@@ -253,35 +234,36 @@ def rightdiagonalcheck(Board):
     return randrow,randcol  
 def chooser(Board):
     x,y=freespot(Board)
-    rha,a=rowcheck(Board)
-    cha,b=Columncheck(Board)
-    ldc,c=leftdiagonalcheck(Board)
-    rdc,d=rightdiagonalcheck(Board)
-    rowchoice,colchoice=freespot(Board)
+   
     grow,gcol,gcheck=checkers(Board)
     if(gcheck==True and Num_Moves>4):
         #print("win situation",grow,gcol)
         return grow,gcol
-    elif(Num_Moves>=3):
+    elif(Num_Moves >2):
+        rha,a=rowcheck(Board)
+        cha,b=Columncheck(Board)
+        ldc,c=leftdiagonalcheck(Board)
+        rdc,d=rightdiagonalcheck(Board)
         if(rha>=0):
+            # print("rha",rha,a)
             rha,a=rowcheck(Board)
             return rha,a
         elif(cha>=0):
-            #print("cha",cha,b)
+            # print("cha",cha,b)
             cha,b=Columncheck(Board)
             return cha,b
-        elif(ldc>=0 ):
-            #print("ldc",ldc,c)
+        elif(ldc>=0):
+            # print("ldc",ldc,c)
             ldc,c=leftdiagonalcheck(Board)
             return ldc,c
         elif(rdc>=0 ):
             rdc,d=rightdiagonalcheck(Board)
-            #print("rdc",rdc,d)
+            # print("rdc",rdc,d)
             return rdc,d
         else:
             return x,y
-    elif(Num_Moves<3):
-        return rowchoice,colchoice
+    elif(Num_Moves<=2):
+        return x,y
 print("Original Board Configuration")
 printBoard(Board)
 while (not WIN) and Num_Moves <= 8:
