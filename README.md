@@ -1,5 +1,5 @@
 # Tic-Tac-Toe-Against-computer
-This repository contains the code, that implements a tic-tac-toe match for a user against a computer.
+This repository contains the code, that implements a tic-tac-toe match for a user against a computer using minimax algorithm.
 
 The objective of Tic Tac Toe is to get three same numbers in a row(in any direction).
 You play on a three by three game board. 
