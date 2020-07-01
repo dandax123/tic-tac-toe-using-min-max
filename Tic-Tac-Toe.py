@@ -35,7 +35,7 @@ def noOfFreeSpots(Board):
                 cnt +=1
     return cnt
 
-def minimax(Board, depth, isMaximizing):
+def minimax(Board, depth, alpha, beta, isMaximizing):
     result = Check_WINNER(Board)
     if(result != -1):
         return scores[result]
@@ -46,8 +46,12 @@ def minimax(Board, depth, isMaximizing):
             for j in range (3):
                 if(Board[i][j] == '-'):
                     Board[i][j] = 'O'
-                    csScore = max(csScore, minimax(Board, depth + 1, False))
+                    Score =  minimax(Board, depth + 1, alpha, beta, False)
                     Board[i][j] = '-'
+                    alpha = max(alpha, Score)
+                    csScore = max(csScore, Score)
+                    if beta <=alpha:
+                        break
         return csScore 
     else:
         currentScore = float('inf')
@@ -55,21 +59,25 @@ def minimax(Board, depth, isMaximizing):
             for j in range (3):
                 if(Board[i][j] == '-'):
                     Board[i][j] = 'X'
-                    currentScore = min(currentScore, minimax(Board, depth + 1, True))
+                    currScore = minimax(Board, depth + 1, alpha, beta, True)
                     Board[i][j] = '-'
+                    currentScore = min(currentScore, currScore)
+                    beta = min(beta, currScore)
+                    if beta <=alpha:
+                        break
         return currentScore            
 
 def chooser(Board):
     bestScore = float('-inf')
     colx  = -1
     rowx = -1
-    if(Num_Moves < 2):
+    if(Num_Moves <= 1):
         return freespot(Board)
     for i in range (3):
         for j in range (3):
             if(Board[i][j] == '-'):
                 Board[i][j] = 'O'
-                score = minimax(Board, 0, False)
+                score = minimax(Board, 0, float('-inf'), float('inf'), False)
                 Board[i][j] = '-'
                 if(score > bestScore):
                     bestScore = score
